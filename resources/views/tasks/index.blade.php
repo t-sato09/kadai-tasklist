@@ -2,6 +2,7 @@
 
 @section('content')
 
+
     <h1>タスクリスト</h1>
 
     @if (count($tasks) > 0)
@@ -15,6 +16,7 @@
             </thead>
             <tbody>
                 @foreach ($tasks as $task)
+                <?php $user = $task->user; ?>
                     <tr>
                         <td>{!! link_to_route('tasks.show', $task->id, ['id' => $task->id]) !!}</td>
                         <td>{{ $task->status }}</td>
@@ -24,7 +26,8 @@
             </tbody>
         </table>
     @endif
-    
+
      {!! link_to_route('tasks.create', '新規タスクの作成', null, ['class' => 'btn btn-primary']) !!}
+
 
 @endsection
